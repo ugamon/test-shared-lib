@@ -9,22 +9,15 @@ import org.thoughtslive.jenkins.plugins.jira.service.JiraService
 class JiraActionClass {
     private JiraService jira_service
     private String idOrKey
-    private Map siteConfig
 
 
-    JiraActionClass(String idOrKey, Map site_config){
+    JiraActionClass(String idOrKey){
         this.idOrKey = idOrKey
-        this.siteConfig = site_config
-
     }
 
-    def connect(){
-        def jira_site = new Site(
-                name=this.siteConfig.get('name'),
-                url=this.siteConfig.get('url'),
-                loginType=this.siteConfig.get('loginType'),
-                timeout=this.siteConfig.get('timeout')
-        )
+    def connect(String url, String name){
+        URL _url = new URL(url)
+        def jira_site = new Site('name', _url, 'basic', 100)
         this.jira_service = jira_site.getService()
 
     }
