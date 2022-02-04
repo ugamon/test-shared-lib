@@ -6,11 +6,16 @@ import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 
 def install(String keyOrId, String comment) {
 
-    stage ('add comment') {
-        script
-                {
-                    comment = JiraActionClass.add_comment(comment, keyOrId)
-                    println("comment object is: ${comment}")
-                }
+    JiraActionClass jiraAction = JiraActionClass('IDR-1', [
+            name: '',
+            url: '',
+            loginType: '',
+            timeout: 100
+    ])
+    stage ('Connect to Jira') {
+        script { jiraAction.connect()}
+    }
+    stage('Leave the comment'){
+        script {jiraAction.add_comment('Test comment')}
     }
 }
