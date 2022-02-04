@@ -20,10 +20,10 @@ class JiraActionClass {
 
     def connect(){
         def jira_site = new Site(
-                name=this.siteConfig.name,
-                url=this.siteConfig.url,
-                loginType=this.siteConfig.loginType,
-                timeout=this.siteConfig.timeout
+                name=this.siteConfig.get('name'),
+                url=this.siteConfig.get('url'),
+                loginType=this.siteConfig.get('loginType'),
+                timeout=this.siteConfig.get('timeout')
         )
         this.jira_service = jira_site.getService()
 

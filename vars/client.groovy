@@ -7,9 +7,9 @@ import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 def install(String keyOrId, String comment) {
 
     JiraActionClass jiraAction = new JiraActionClass(keyOrId, [
-            name: '',
-            url: '',
-            loginType: '',
+            name: 'asdf',
+            url: 'https://sdfwer.com',
+            loginType: 'basic',
             timeout: 100
     ])
     stage ('Connect to Jira') {
