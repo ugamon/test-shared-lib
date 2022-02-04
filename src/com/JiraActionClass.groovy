@@ -19,7 +19,6 @@ class JiraActionClass {
     }
 
     def connect(){
-        def jira = new Site()
         def jira_site = new Site(
                 name=this.siteConfig.get('name'),
                 url=this.siteConfig.get('url'),
