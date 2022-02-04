@@ -6,7 +6,7 @@ import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 
 def install(String keyOrId, String comment) {
 
-    JiraActionClass jiraAction = JiraActionClass('IDR-1', [
+    JiraActionClass jiraAction = new JiraActionClass(keyOrId, [
             name: '',
             url: '',
             loginType: '',
@@ -16,6 +16,6 @@ def install(String keyOrId, String comment) {
         script { jiraAction.connect()}
     }
     stage('Leave the comment'){
-        script {jiraAction.add_comment('Test comment')}
+        script {jiraAction.add_comment(comment)}
     }
 }
